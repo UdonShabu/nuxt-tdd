@@ -1,19 +1,25 @@
-import { describe, it, expect } from "vitest";
-import { mount, shallowMount } from "@vue/test-utils";
-import { ref } from "vue";
-import HelloWorldVue from "components/HelloWorld.vue";
+import { describe, it, expect, beforeAll } from "vitest";
+import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
+import HelloWorld from "../components/HelloWorld.vue";
 
-describe("HelloWorld", () => {
-  it('should return "yo" when calling getYo', async () => {
-    const valueSelector = "#stepper-value";
-    const buttonSelector = "#increment";
+describe("My test", () => {
+  let wrapper: VueWrapper<any>;
+  beforeAll(async () => {
+    // wrapper = mount(HelloWorld);
 
-    const wrapper = mount(HelloWorldVue);
+    wrapper = mount(HelloWorld);
+  });
 
-    expect(wrapper.find(valueSelector).text()).toContain(2);
+  it("my test", async () => {
+    wrapper.vm.myCount = 5;
+    // Assert
+    // expect(wrapper.find("#my-stepper-value").text()).toBe("0");
 
-    await wrapper.find(buttonSelector).trigger("click");
+    // Simulate
+    await wrapper.find("#my-increment").trigger("click");
+    await wrapper.vm.$nextTick();
 
-    expect(wrapper.find(valueSelector).text()).toContain(1);
+    // Assert updated count value
+    expect(wrapper.find("#my-stepper-value").text()).toBe("10");
   });
 });

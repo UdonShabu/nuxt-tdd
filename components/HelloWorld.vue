@@ -1,17 +1,27 @@
 <template>
   <div>
-    <h1>Hello</h1>
-    <p id="stepper-value">{{ count }}</p>
-    <button id="increment" @click="decrement">Increment</button>
+    <article>
+      <h1>Hello</h1>
+      <p id="my-stepper-value">{{ myCount }}</p>
+      <button id="my-increment" @click="increment()">increment</button>
+    </article>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive, toRef } from "vue";
 
-const count = ref(2);
-const increment = () => count.value++;
-const decrement = () => count.value--;
+const myCount = ref(0);
+const increment = () => (myCount.value *= 2);
 </script>
 
 <style scoped></style>
+
+<!-- const userName = reactive({
+  first: "spider",
+  last: "girl",
+});
+const fullname = ref("");
+const getfullName = (first: string, last: string) => {
+  fullname.value = `${first} ${last}`;
+}; -->
