@@ -11,8 +11,13 @@
 <script setup lang="ts">
 import { ref, reactive, toRef } from "vue";
 
-const myCount = ref(0);
+const myCount = ref<number>(0);
 const increment = () => (myCount.value *= 2);
+
+// const name = ref<string>('')
+const getFullName = (first: string, last: string) => {
+  return `${first} ${last}`;
+};
 </script>
 
 <style scoped></style>

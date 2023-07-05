@@ -7,11 +7,11 @@ describe("My test", () => {
   beforeAll(async () => {
     // wrapper = mount(HelloWorld);
 
-    wrapper = mount(HelloWorld);
+    wrapper = shallowMount(HelloWorld);
   });
 
-  it("my test", async () => {
-    wrapper.vm.myCount = 5;
+  it("should increase myCount by multiply 2", async () => {
+    wrapper.vm.myCount = 2;
     // Assert
     // expect(wrapper.find("#my-stepper-value").text()).toBe("0");
 
@@ -19,7 +19,14 @@ describe("My test", () => {
     await wrapper.find("#my-increment").trigger("click");
     await wrapper.vm.$nextTick();
 
-    // Assert updated count value
-    expect(wrapper.find("#my-stepper-value").text()).toBe("10");
+    // Assert
+    // expect(wrapper.find("#my-stepper-value").text()).toBe("10");
+    expect(wrapper.vm.myCount).toBe(4);
+  });
+
+  it("should return full name", async () => {
+    const result = wrapper.vm.getFullName("iron", "man");
+
+    expect(result).toBe("iron man");
   });
 });

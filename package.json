@@ -5,7 +5,6 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "test": "vitest",
-    "test:unit": "jest --watch",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
